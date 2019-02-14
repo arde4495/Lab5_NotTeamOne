@@ -10,29 +10,53 @@ milk <- read.csv('state_milk_production.csv')
 head(milk)
 milk <- milk %>%
   mutate(milk_million = milk_produced/1000000)
-milk1996 <- milk %>%
-  filter(year == 1996)
-regionNSP <- milk %>%
-  filter(region %in% c('Northeast', 'Southern Plains', 'Mountain', 'Pacific', 'Appalachian'))
-
-
 ```
-
+##### Arie
 ```{r}
-ggplot(data = milk1996 , mapping = aes(x = milk_million ))+
-  geom_density()+
-  ggtitle('Distribution of Milk Production in 1996')+
-  xlab('Milk Produced(Millions lbs.)')+
-  ylab('Density')
+
+milk1996 <- milk %>% filter(year == 1996) 
+stat1996 <- milk1996 %>% summarise(average = mean(milk_million), med_1996= median(milk_million), max_produced = max(milk_million), min_produced = min(milk_million))
+
+stat1996
 
 ```
 ```{r}
-milk_production1996 <- milk1996 %>%
-  group_by(state) %>%
-  summarize(average = mean(milk_million), med_1996= median(milk_million), max_produced = max(milk_million), min_produced = (milk_million)) %>%
-  as_tibble()
-  
-milk_production1996
+
+milk1997 <- milk %>% filter(year == 1997) 
+stat1997 <- milk1997 %>% summarise(average = mean(milk_million), med_1997= median(milk_million), max_produced = max(milk_million), min_produced = min(milk_million))
+
+stat1997
+
+```
+```{r}
+
+milk1998 <- milk %>% filter(year == 1998) 
+stat1998 <- milk1998 %>% summarise(average = mean(milk_million), med_1998= median(milk_million), max_produced = max(milk_million), min_produced = min(milk_million))
+
+stat1998
+
+```
+```{r}
+
+milk1999 <- milk %>% filter(year == 1999) 
+stat1999 <- milk1999 %>% summarise(average = mean(milk_million), med_1999= median(milk_million), max_produced = max(milk_million), min_produced = min(milk_million))
+
+stat1999
+
+
+```
+```{r}
+
+milk2000 <- milk %>% filter(year == 2000) 
+stat2000 <- milk2000 %>% summarise(average = mean(milk_million), med_2000= median(milk_million), max_produced = max(milk_million), min_produced = min(milk_million))
+
+stat2000
+
+max2000 <- milk2000 %>% top_n(1,milk_million)
+max2000
+min2000 <- milk2000 %>% top_n(-1,milk_million)
+min2000
+
 ```
 
 
