@@ -11,6 +11,37 @@ head(milk)
 milk <- milk %>%
   mutate(milk_million = milk_produced/1000000)
 ```
+
+
+```{r}
+minyear <- milk %>%
+  group_by(year) %>%
+  summarize(total = sum(milk_million, na.rm=TRUE)) %>%
+  arrange(total)
+minyear
+
+
+mostyear <- milk %>%
+  group_by(year) %>%
+  summarize(total = sum(milk_million, na.rm=TRUE)) %>%
+  arrange(desc(total))
+mostyear
+ 
+
+five_least_states <- milk %>%
+  filter(year == 2017) %>%
+  group_by(state) %>%
+  arrange(milk_million)
+five_least_states
+
+five_most_states <- milk %>%
+  filter(year == 2017) %>%
+  group_by(state) %>%
+  arrange(desc(milk_million))
+  
+five_most_states
+```
+
 ##### Arie
 ```{r}
 

@@ -188,6 +188,85 @@ $(document).ready(function () {
 </div>
 
 
+<pre class="r"><code>minyear &lt;- milk %&gt;%
+  group_by(year) %&gt;%
+  summarize(total = sum(milk_million, na.rm=TRUE)) %&gt;%
+  arrange(total)
+minyear</code></pre>
+<pre><code>## # A tibble: 48 x 2
+##     year  total
+##    &lt;dbl&gt;  &lt;dbl&gt;
+##  1  1975 115398
+##  2  1973 115491
+##  3  1974 115586
+##  4  1970 117007
+##  5  1971 118566
+##  6  1972 120025
+##  7  1976 120180
+##  8  1978 121461
+##  9  1977 122654
+## 10  1979 123351
+## # ... with 38 more rows</code></pre>
+<pre class="r"><code>mostyear &lt;- milk %&gt;%
+  group_by(year) %&gt;%
+  summarize(total = sum(milk_million, na.rm=TRUE)) %&gt;%
+  arrange(desc(total))
+mostyear</code></pre>
+<pre><code>## # A tibble: 48 x 2
+##     year  total
+##    &lt;dbl&gt;  &lt;dbl&gt;
+##  1  2017 215466
+##  2  2016 212406
+##  3  2015 208597
+##  4  2014 206056
+##  5  2013 201230
+##  6  2012 200642
+##  7  2011 196256
+##  8  2010 192876
+##  9  2008 189979
+## 10  2009 189202
+## # ... with 38 more rows</code></pre>
+<pre class="r"><code>five_least_states &lt;- milk %&gt;%
+  filter(year == 2017) %&gt;%
+  group_by(state) %&gt;%
+  arrange(milk_million)
+five_least_states</code></pre>
+<pre><code>## # A tibble: 50 x 5
+## # Groups:   state [50]
+##    region       state          year milk_produced milk_million
+##    &lt;fct&gt;        &lt;fct&gt;         &lt;dbl&gt;         &lt;dbl&gt;        &lt;dbl&gt;
+##  1 Pacific      Alaska         2017       3000000            3
+##  2 Northeast    Rhode Island   2017      13000000           13
+##  3 Pacific      Hawaii         2017      39000000           39
+##  4 Delta States Arkansas       2017      79000000           79
+##  5 Southeast    Alabama        2017      89000000           89
+##  6 Northeast    Delaware       2017      93000000           93
+##  7 Northeast    New Jersey     2017     119000000          119
+##  8 Appalachian  West Virginia  2017     127000000          127
+##  9 Delta States Mississippi    2017     137000000          137
+## 10 Mountain     Wyoming        2017     138000000          138
+## # ... with 40 more rows</code></pre>
+<pre class="r"><code>five_most_states &lt;- milk %&gt;%
+  filter(year == 2017) %&gt;%
+  group_by(state) %&gt;%
+  arrange(desc(milk_million))
+  
+five_most_states</code></pre>
+<pre><code>## # A tibble: 50 x 5
+## # Groups:   state [50]
+##    region          state         year milk_produced milk_million
+##    &lt;fct&gt;           &lt;fct&gt;        &lt;dbl&gt;         &lt;dbl&gt;        &lt;dbl&gt;
+##  1 Pacific         California    2017   39798000000        39798
+##  2 Lake States     Wisconsin     2017   30320000000        30320
+##  3 Northeast       New York      2017   14912000000        14912
+##  4 Mountain        Idaho         2017   14627000000        14627
+##  5 Southern Plains Texas         2017   12054000000        12054
+##  6 Lake States     Michigan      2017   11231000000        11231
+##  7 Northeast       Pennsylvania  2017   10938000000        10938
+##  8 Lake States     Minnesota     2017    9864000000         9864
+##  9 Mountain        New Mexico    2017    8212000000         8212
+## 10 Pacific         Washington    2017    6526000000         6526
+## # ... with 40 more rows</code></pre>
 <div id="arie" class="section level5">
 <h5>Arie</h5>
 <pre class="r"><code>milk1996 &lt;- milk %&gt;% filter(year == 1996) 
