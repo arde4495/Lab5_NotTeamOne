@@ -28,7 +28,7 @@ stat1997 <- milk1997 %>% summarise(average = mean(milk_million), med_1997= media
 stat1997
 
 ```
-```{r}
+```{r, echo = FALSE, include = FALSE}
 
 milk1998 <- milk %>% filter(year == 1998) 
 stat1998 <- milk1998 %>% summarise(average = mean(milk_million), med_1998= median(milk_million), max_produced = max(milk_million), min_produced = min(milk_million))
@@ -36,15 +36,24 @@ stat1998 <- milk1998 %>% summarise(average = mean(milk_million), med_1998= media
 stat1998
 
 ```
-```{r}
+#### Ethan's Data
+
+* The mean and median millions of pounds of milk are 3251.8 and 1418, respectively, as shown in the first data frame.  California produces the most milk and Alaska produces the least amount of milk as shown in data frames two and three.
+```{r, echo=FALSE}
 
 milk1999 <- milk %>% filter(year == 1999) 
 stat1999 <- milk1999 %>% summarise(average = mean(milk_million), med_1999= median(milk_million), max_produced = max(milk_million), min_produced = min(milk_million))
 
 stat1999
 
+max1999 <- milk1999 %>% top_n(1,milk_million)
+max1999
+min1999 <- milk1999 %>% top_n(-1,milk_million)
+min1999
+
 
 ```
+****
 ```{r}
 
 milk2000 <- milk %>% filter(year == 2000) 
