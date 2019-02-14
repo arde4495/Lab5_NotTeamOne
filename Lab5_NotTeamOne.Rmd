@@ -38,6 +38,45 @@ stat1997 <- milk1997 %>% summarise(average = mean(milk_million), med_1997= media
 stat1997
 
 ```
+#### Anderson's Data
+****
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+milk <- read.csv('state_milk_production.csv')
+head(milk)
+milk1998 <- milk %>%
+  mutate(milk_million = milk_produced/1000000)%>%
+  filter(year == 1998)
+```
+```{r}
+ggplot(data = milk1998, mapping = aes(x = milk_million )) +
+  geom_density() + 
+  ggtitle('Estimation of milk produced in 1998') +
+  xlab('Milk Produced') +
+  ylab('Density')
+```
+```{r}
+
+milk1998 <- milk %>% filter(year == 1998) 
+stat1998 <- milk1998 %>% summarise(average = mean(milk_million), med_1998= median(milk_million), max_produced = max(milk_million), min_produced = min(milk_million))
+
+stat1998
+
+max1998 <- milk1998 %>% top_n(1,milk_million)
+max1998
+min1998 <- milk1998 %>% top_n(-1,milk_million)
+min1998
+
+```
+```{r}
+milk_production1998 <- milk1998 %>%
+  group_by(state) %>%
+  summarize(average = mean(milk_million), med_1998= median(milk_million), max_produced = max(milk_million), min_produced = (milk_million)) %>%
+  as_tibble()
+  
+milk_production1998
+```
 ```{r, echo = FALSE, include = FALSE}
 
 milk1998 <- milk %>% filter(year == 1998) 
