@@ -1,0 +1,39 @@
+---
+title: "Lab5_individual"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+milk <- read.csv('state_milk_production.csv')
+head(milk)
+milk <- milk %>%
+  mutate(milk_million = milk_produced/1000000)
+milk1996 <- milk %>%
+  filter(year == 1996)
+regionNSP <- milk %>%
+  filter(region %in% c('Northeast', 'Southern Plains', 'Mountain', 'Pacific', 'Appalachian'))
+
+
+```
+
+```{r}
+ggplot(data = milk1996 , mapping = aes(x = milk_million ))+
+  geom_density()+
+  ggtitle('Distribution of Milk Production in 1996')+
+  xlab('Milk Produced(Millions lbs.)')+
+  ylab('Density')
+
+```
+```{r}
+milk_production1996 <- milk1996 %>%
+  group_by(state) %>%
+  summarize(average = mean(milk_million), med_1996= median(milk_million), max_produced = max(milk_million), min_produced = (milk_million)) %>%
+  as_tibble()
+  
+milk_production1996
+```
+
+
+
