@@ -44,6 +44,15 @@ five_most_states
 
 ##### Arie
 ```{r}
+milk1996 <- milk %>% filter(year == 1996) 
+ggplot(data = milk1996 , mapping = aes(x = milk_million ))+
+  geom_density()+
+  ggtitle('Distribution of Milk Production in 1996')+
+  xlab('Milk Produced(Millions lbs.)')+
+  ylab('Density')
+
+```
+```{r}
 
 milk1996 <- milk %>% filter(year == 1996) 
 stat1996 <- milk1996 %>% summarise(average = mean(milk_million), med_1996= median(milk_million), max_produced = max(milk_million), min_produced = min(milk_million))
@@ -59,16 +68,40 @@ stat1997 <- milk1997 %>% summarise(average = mean(milk_million), med_1997= media
 stat1997
 
 ```
-```{r, echo = FALSE, include = FALSE}
+#### Anderson's Data
+****
+```{r}
 
 milk1998 <- milk %>% filter(year == 1998) 
 stat1998 <- milk1998 %>% summarise(average = mean(milk_million), med_1998= median(milk_million), max_produced = max(milk_million), min_produced = min(milk_million))
 
 stat1998
 
-```
-#### Ethan's Data
+max1998 <- milk1998 %>% top_n(1,milk_million)
+max1998
+min1998 <- milk1998 %>% top_n(-1,milk_million)
+min1998
 
+```
+```{r}
+ggplot(data = milk1998, mapping = aes(x = milk_million )) +
+  geom_density() + 
+  ggtitle('Estimation of milk produced in 1998') +
+  xlab('Milk Produced') +
+  ylab('Density')
+```
+
+```{r}
+milk_production1998 <- milk1998 %>%
+  group_by(state) %>%
+  summarize(average = mean(milk_million), med_1998= median(milk_million), max_produced = max(milk_million), min_produced = (milk_million)) %>%
+  as_tibble()
+  
+milk_production1998
+```
+
+#### Ethan's Data
+****
 * The mean and median millions of pounds of milk are 3251.8 and 1418, respectively, as shown in the first data frame.  California produces the most milk and Alaska produces the least amount of milk as shown in data frames two and three.
 ```{r, echo=FALSE}
 
@@ -84,7 +117,6 @@ min1999
 
 
 ```
-****
 ```{r}
 
 milk2000 <- milk %>% filter(year == 2000) 
@@ -98,6 +130,20 @@ min2000 <- milk2000 %>% top_n(-1,milk_million)
 min2000
 
 ```
+### Team Graph
+****
+```{r}
 
+milksub <- milk %>%
+  filter(state %in% c('Texas','Colorado','Connecticut', 'Alaska', 'California')) %>%
+  select(state, year, milk_million)
+
+ggplot(data = milksub, aes(x = year, y = milk_million, color = state)) +
+  geom_boxplot() + 
+  ggtitle('Milk Produced over time by State') +
+  xlab('Year') +
+  ylab('Milk Produced (Million lbs.)')
+
+```
 
 
