@@ -81,7 +81,7 @@ five_most_states
 
 * Insert text about this here
 
-
+****
 #### Arie's Data
 ****
 ```{r, echo=FALSE}
@@ -94,9 +94,11 @@ ggplot(data = milk1996 , mapping = aes(x = milk_million ))+
   ylab('Density')
 
 ```
+
+* The mean and median millions of pounds of milk are 3080.12 and 1480, respectively, as shown in the first data frame.  California produces the most milk and Alaska produces the least amount of milk as shown in data frames two and three.
+
 ```{r, echo=FALSE}
 
-milk1996 <- milk %>% filter(year == 1996) 
 stat1996 <- milk1996 %>% summarise(average = mean(milk_million), med_1996= median(milk_million), max_produced = max(milk_million), min_produced = min(milk_million))
 
 stat1996
@@ -107,6 +109,7 @@ min1996 <- milk1996 %>% top_n(-1,milk_million)
 min1996
 
 ```
+****
 #### Ryan's Data
 ****
 ```{r, echo=FALSE}
@@ -117,6 +120,11 @@ ggplot(data = milk1997 , mapping = aes(x = milk_million ))+
   ggtitle('Distribution of Milk Production in 1997')+
   xlab('Milk Produced(Millions lbs.)')+
   ylab('Density')
+```
+
+* The mean and median millions of pounds of milk are 3121.82 and 1436, respectively, as shown in the first data frame.  California produces the most milk and Alaska produces the least amount of milk as shown in data frames two and three.
+
+```{r,echo=FALSE}
 
 stat1997 <- milk1997 %>% summarise(average = mean(milk_million), med_1997= median(milk_million), max_produced = max(milk_million), min_produced = min(milk_million))
 
@@ -128,6 +136,7 @@ min1997 <- milk1997 %>% top_n(-1,milk_million)
 min1997
 
 ```
+****
 #### Anderson's Data
 ****
 ```{r, echo=FALSE}
@@ -138,6 +147,12 @@ ggplot(data = milk1998, mapping = aes(x = milk_million )) +
   ggtitle('Estimation of milk produced in 1998') +
   xlab('Milk Produced') +
   ylab('Density')
+
+```
+
+* The mean and median millions of pounds of milk are 3145.22 and 1411.5, respectively, as shown in the first data frame.  California produces the most milk and Alaska produces the least amount of milk as shown in data frames two and three.
+
+```{r, echo=FALSE}
 stat1998 <- milk1998 %>% summarise(average = mean(milk_million), med_1998= median(milk_million), max_produced = max(milk_million), min_produced = min(milk_million))
 
 stat1998
@@ -158,7 +173,7 @@ milk_production1998 <- milk1998 %>%
   as_tibble()
   
 ```
-
+****
 #### Ethan's Data
 ****
 ```{r, echo=FALSE}
@@ -184,12 +199,22 @@ min1999 <- milk1999 %>% top_n(-1,milk_million)
 min1999
 
 ```
+****
 #### David's Data
 ****
 
 ```{r, echo=FALSE}
 
 milk2000 <- milk %>% filter(year == 2000) 
+ggplot(data = milk2000 , mapping = aes(x = milk_million ))+
+  geom_density()+
+  ggtitle('Distribution of Milk Production in 2000')+
+  xlab('Milk Produced(Millions lbs.)')+
+  ylab('Density')
+```
+
+* The mean and median millions of pounds of milk are 3347.84 and 1453.5, respectively, as shown in the first data frame.  California produces the most milk and Alaska produces the least amount of milk as shown in data frames two and three.
+```{r, echo=FALSE}
 stat2000 <- milk2000 %>% summarise(average = mean(milk_million), med_2000= median(milk_million), max_produced = max(milk_million), min_produced = min(milk_million))
 
 stat2000
@@ -198,11 +223,6 @@ max2000 <- milk2000 %>% top_n(1,milk_million)
 max2000
 min2000 <- milk2000 %>% top_n(-1,milk_million)
 min2000
-ggplot(data = milk2000 , mapping = aes(x = milk_million ))+
-  geom_density()+
-  ggtitle('Distribution of Milk Production in 2000')+
-  xlab('Milk Produced(Millions lbs.)')+
-  ylab('Density')
 
 ```
 
