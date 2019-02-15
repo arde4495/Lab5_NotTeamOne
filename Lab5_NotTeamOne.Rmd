@@ -82,6 +82,7 @@ five_most_states
 
 * In 2017, the 5 states that produced the most milk were Californaia Wisconsin, New York, Idaho and Texas in that order. 
 
+****
 ### Individual Component
 ****
 #### Arie's Data
@@ -233,11 +234,11 @@ min2000
 ****
 * Arie: Made team graph, typed what was helpful section, created repo
 
-* Ryan:
+* Ryan: Found the 5 states that produced the least and most milk in 2017. Also found the year in which the most and least milk was produced.
 
-* Anderson:
+* Anderson: Helped edit data set and created an indiviudal graph.
 
-* Ethan:
+* Ethan: Helped edit data set and created an indiviudal graph. Edited merge conflicts and errors. 
 
-* David:
+* David: Tibble creation for each year and formating doc. Added informative bullets under graphs and tables. Gave cookies to teammates.
 
