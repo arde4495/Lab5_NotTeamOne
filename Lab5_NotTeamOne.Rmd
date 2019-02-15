@@ -32,6 +32,55 @@ ggplot(data = milksub, aes(x = year, y = milk_million, color = state)) +
 
 ```
 
+ 
+ 
+```{r, echo=FALSE} 
+minyear <- milk %>% 
+  group_by(year) %>% 
+  summarize(total = sum(milk_million, na.rm=TRUE)) %>% 
+  arrange(total) 
+minyear 
+```
+
+* Insert text about this here
+
+```{r, echo=FALSE} 
+ 
+mostyear <- milk %>% 
+  group_by(year) %>% 
+  summarize(total = sum(milk_million, na.rm=TRUE)) %>% 
+  arrange(desc(total)) 
+mostyear 
+  
+```
+
+* Insert text about this here
+
+
+```{r, echo=FALSE} 
+
+five_least_states <- milk %>% 
+  filter(year == 2017) %>% 
+  group_by(state) %>% 
+  arrange(milk_million) 
+five_least_states 
+```
+
+* Insert text about this here
+
+
+```{r, echo=FALSE}
+ 
+five_most_states <- milk %>% 
+  filter(year == 2017) %>% 
+  group_by(state) %>% 
+  arrange(desc(milk_million)) 
+   
+five_most_states 
+``` 
+
+* Insert text about this here
+
 
 #### Arie's Data
 ****
@@ -112,7 +161,7 @@ milk_production1998 <- milk1998 %>%
 
 #### Ethan's Data
 ****
-```{r}
+```{r, echo=FALSE}
 milk1999 <- milk %>% filter(year == 1999) 
 ggplot(data = milk1999 , mapping = aes(x = milk_million ))+
   geom_density()+
@@ -120,6 +169,7 @@ ggplot(data = milk1999 , mapping = aes(x = milk_million ))+
   xlab('Milk Produced(Millions lbs.)')+
   ylab('Density')
 ```
+
 * The mean and median millions of pounds of milk are 3251.8 and 1418, respectively, as shown in the first data frame.  California produces the most milk and Alaska produces the least amount of milk as shown in data frames two and three.
 
 ```{r, echo=FALSE}
