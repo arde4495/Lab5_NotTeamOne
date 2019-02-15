@@ -32,8 +32,10 @@ ggplot(data = milksub, aes(x = year, y = milk_million, color = state)) +
 
 ```
 
- * DO THIS -> After everyone is finished, as a team, write a few sentences in the team report in R Markdown detailing what you found to be the most helpful in learning about this data. 
+
  
+* In this lab, we thought using the dyplr functions and storing variables were most helpful in learning about the data. Using these functions helped us analyze the data, to find which state for exery year, produced the most milk. Storing variables helped us select and maniputalte specific data we wanted to show in our tables or in our graphs.
+
 ```{r, echo=FALSE} 
 minyear <- milk %>% 
   group_by(year) %>% 
@@ -226,4 +228,16 @@ min2000 <- milk2000 %>% top_n(-1,milk_million)
 min2000
 
 ```
+****
+#### Who Did What?
+****
+* Arie: Made team graph, typed what was helpful section, created repo
+
+* Ryan:
+
+* Anderson:
+
+* Ethan:
+
+* David:
 
