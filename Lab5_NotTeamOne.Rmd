@@ -1,6 +1,6 @@
 ---
 title: "Lab5_NotTeamOne"
-author: "David Orozco, Anderson Mun, Arie de Valle, Ethan Schacht, Ryan Tate"
+author: "David Orozco, Anderson Mun, Arie del Valle, Ethan Schacht, Ryan Tate"
 date: "February 15, 2019"
 output: html_document
 ---
@@ -32,55 +32,55 @@ ggplot(data = milksub, aes(x = year, y = milk_million, color = state)) +
 
 ```
 
- 
+ * DO THIS -> After everyone is finished, as a team, write a few sentences in the team report in R Markdown detailing what you found to be the most helpful in learning about this data. 
  
 ```{r, echo=FALSE} 
 minyear <- milk %>% 
   group_by(year) %>% 
   summarize(total = sum(milk_million, na.rm=TRUE)) %>% 
-  arrange(total) 
+ top_n(-1,total) 
 minyear 
 ```
 
-* Insert text about this here
+* 1975 is the year when the least milk was produced in the United States
 
 ```{r, echo=FALSE} 
  
 mostyear <- milk %>% 
   group_by(year) %>% 
   summarize(total = sum(milk_million, na.rm=TRUE)) %>% 
-  arrange(desc(total)) 
+   top_n(1,total)
 mostyear 
   
 ```
 
-* Insert text about this here
+* 2017 is the year when the most milk was produced in the United States
 
 
 ```{r, echo=FALSE} 
 
 five_least_states <- milk %>% 
   filter(year == 2017) %>% 
-  group_by(state) %>% 
-  arrange(milk_million) 
+    top_n(-5,milk_million) %>% arrange(milk_million)
+
 five_least_states 
 ```
 
-* Insert text about this here
+* In 2017, the 5 states that produced the least milk were Alaska, Rhode Island, Hawaii, Arkansas, and Alabama in that order
 
 
 ```{r, echo=FALSE}
  
 five_most_states <- milk %>% 
   filter(year == 2017) %>% 
-  group_by(state) %>% 
-  arrange(desc(milk_million)) 
+ top_n(5,milk_million) %>% arrange(desc(milk_million))
    
 five_most_states 
 ``` 
 
-* Insert text about this here
+* In 2017, the 5 states that produced the most milk were Californaia Wisconsin, New York, Idaho and Texas in that order. 
 
+### Individual Component
 ****
 #### Arie's Data
 ****
