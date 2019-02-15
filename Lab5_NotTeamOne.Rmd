@@ -36,6 +36,7 @@ ggplot(data = milksub, aes(x = year, y = milk_million, color = state)) +
  
 * In this lab, we thought using the dyplr functions and storing variables were most helpful in learning about the data. Using these functions helped us analyze the data, to find which state for exery year, produced the most milk. Storing variables helped us select and maniputalte specific data we wanted to show in our tables or in our graphs.
 
+****
 ```{r, echo=FALSE} 
 minyear <- milk %>% 
   group_by(year) %>% 
@@ -46,6 +47,7 @@ minyear
 
 * 1975 is the year when the least milk was produced in the United States
 
+****
 ```{r, echo=FALSE} 
  
 mostyear <- milk %>% 
@@ -58,7 +60,7 @@ mostyear
 
 * 2017 is the year when the most milk was produced in the United States
 
-
+****
 ```{r, echo=FALSE} 
 
 five_least_states <- milk %>% 
@@ -70,7 +72,7 @@ five_least_states
 
 * In 2017, the 5 states that produced the least milk were Alaska, Rhode Island, Hawaii, Arkansas, and Alabama in that order
 
-
+****
 ```{r, echo=FALSE}
  
 five_most_states <- milk %>% 
